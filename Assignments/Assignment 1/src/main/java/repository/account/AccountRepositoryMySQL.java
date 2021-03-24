@@ -131,7 +131,6 @@ public class AccountRepositoryMySQL implements AccountRepository {
             updateStatement.setInt(3, account.getAmountOfMoney());
             updateStatement.setDate(4, new java.sql.Date(account.getCreationDate().toEpochDay()));
             updateStatement.executeUpdate();
-            save(account);
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

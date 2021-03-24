@@ -1,5 +1,6 @@
 package launcher;
 
+import controller.EmployeeController;
 import controller.LoginController;
 import database.DBConnectionFactory;
 import repository.account.AccountRepositoryMySQL;
@@ -14,6 +15,7 @@ import service.client.ClientService;
 import service.client.ClientServiceImpl;
 import service.user.AuthentificationService;
 import service.user.AuthentificationServiceMySQL;
+import view.EmployeeView;
 import view.LoginView;
 
 import java.sql.Connection;
@@ -21,8 +23,12 @@ import java.sql.Connection;
 public class ComponentFactory {
 
     private final LoginView loginView;
+    private final EmployeeView employeeView;
+
 
     private final LoginController loginController;
+    private final EmployeeController employeeController;
+
 
     private final AuthentificationService authenticationService;
     private final ClientService clientService;
@@ -46,13 +52,16 @@ public class ComponentFactory {
         Connection connection = new DBConnectionFactory().getConnectionWrapper(componentsForTests).getConnection();
         this.rightsRolesRepository = new RightsRolesRepositoryMySQL(connection);
         this.userRepository = new UserRepositoryMySQL(connection, rightsRolesRepository);
-        this.authenticationService = new AuthentificationServiceMySQL(this.userRepository, this.rightsRolesRepository);
-        this.loginView = new LoginView();
-        this.loginController = new LoginController(loginView, authenticationService);
         this.clientRepositoryMySQL = new ClientRepositoryMySQL(connection);
         this.accountRepositoryMySQL = new AccountRepositoryMySQL(connection);
         this.clientService = new ClientServiceImpl(clientRepositoryMySQL);
         this.accountService = new AccountServiceImpl(accountRepositoryMySQL);
+        this.authenticationService = new AuthentificationServiceMySQL(this.userRepository, this.rightsRolesRepository);
+        this.loginView = new LoginView();
+        this.employeeView = new EmployeeView();
+        this.employeeController = new EmployeeController(this.employeeView, this.accountService, this.clientService);
+        this.loginController = new LoginController(loginView, authenticationService, employeeController);
+
     }
 
     public AuthentificationService getAuthenticationService() {

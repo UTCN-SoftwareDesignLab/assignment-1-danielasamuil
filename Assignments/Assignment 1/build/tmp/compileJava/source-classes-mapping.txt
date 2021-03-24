@@ -36,8 +36,8 @@ model/Client.java
  model.Client
 model/Right.java
  model.Right
-repository/account/AccountRepositoryMySQL.java
- repository.account.AccountRepositoryMySQL
+view/EmployeeView.java
+ view.EmployeeView
 service/client/ClientServiceImpl.java
  service.client.ClientServiceImpl
 model/validation/Notification.java
@@ -70,11 +70,20 @@ repository/account/AccountRepository.java
  repository.account.AccountRepository
 service/account/AccountService.java
  service.account.AccountService
+launcher/Launcher.java
+ launcher.Launcher
+repository/account/AccountRepositoryMySQL.java
+ repository.account.AccountRepositoryMySQL
 controller/LoginController.java
  controller.LoginController
  controller.LoginController$LoginButtonListener
  controller.LoginController$RegisterButtonListener
-launcher/Launcher.java
- launcher.Launcher
+controller/EmployeeController.java
+ controller.EmployeeController
+ controller.EmployeeController$CreateAccountButtonListener
+ controller.EmployeeController$DeleteAccountButtonListener
+ controller.EmployeeController$TransferButtonListener
+ controller.EmployeeController$UpdateAccountButtonListener
+ controller.EmployeeController$ViewAccountButtonListener
 launcher/ComponentFactory.java
  launcher.ComponentFactory

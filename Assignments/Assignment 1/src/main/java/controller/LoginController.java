@@ -14,9 +14,13 @@ public class LoginController {
     private final LoginView loginView;
     private final AuthentificationService authenticationService;
 
-    public LoginController(LoginView loginView, AuthentificationService authenticationService) {
+    private final EmployeeController employeeController;
+
+
+    public LoginController(LoginView loginView, AuthentificationService authenticationService, EmployeeController employeeController) {
         this.loginView = loginView;
         this.authenticationService = authenticationService;
+        this.employeeController = employeeController;
         loginView.setLoginButtonListener(new LoginButtonListener());
         loginView.setRegisterButtonListener(new RegisterButtonListener());
     }
@@ -33,7 +37,8 @@ public class LoginController {
             if (loginNotification.hasErrors()) {
                 JOptionPane.showMessageDialog(loginView.getContentPane(), loginNotification.getFormattedErrors());
             } else {
-                JOptionPane.showMessageDialog(loginView.getContentPane(), "Login successful!");
+                if(!username.equals("admin@application.com"))
+                    employeeController.setVisible(true);
             }
         }
     }
