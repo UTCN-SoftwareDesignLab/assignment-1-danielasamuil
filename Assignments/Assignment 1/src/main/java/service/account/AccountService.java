@@ -15,9 +15,9 @@ public interface AccountService {
 
     Account findByClientId(Long clientId) throws EntityNotFoundException;
 
-    Notification<Boolean> save(Long id, Integer identificationNumber, String type, Integer moneyAmount, LocalDate creationDate);
+    Notification<Boolean> save(Account account);
 
-    Notification<Boolean> update(Long id, Integer identificationNumber, String type, Integer moneyAmount, LocalDate creationDate);
+    Notification<Boolean> update(Account account);
 
     void removeAll();
 

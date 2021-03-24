@@ -1,7 +1,7 @@
 model/Role.java
  model.Role
-service/client/ClientService.java
- service.client.ClientService
+view/EmployeeView.java
+ view.EmployeeView
 repository/security/RightsRolesRepositoryMySQL.java
  repository.security.RightsRolesRepositoryMySQL
 repository/client/ClientRepository.java
@@ -60,28 +60,22 @@ database/DBConnectionFactory.java
  database.DBConnectionFactory
 repository/account/AccountRepositoryMySQL.java
  repository.account.AccountRepositoryMySQL
-service/account/AccountServiceImpl.java
- service.account.AccountServiceImpl
+model/builder/ClientBuilder.java
+ model.builder.ClientBuilder
 database/JDBConnectionWrapper.java
  database.JDBConnectionWrapper
 view/DTOs/ClientDTO.java
  view.DTOs.ClientDTO
 view/DTOs/AccountDTO.java
  view.DTOs.AccountDTO
-service/account/AccountService.java
- service.account.AccountService
-model/builder/ClientBuilder.java
- model.builder.ClientBuilder
 database/Bootstraper.java
  database.Bootstraper
-service/client/ClientServiceImpl.java
- service.client.ClientServiceImpl
-view/EmployeeView.java
- view.EmployeeView
 controller/LoginController.java
  controller.LoginController
  controller.LoginController$LoginButtonListener
  controller.LoginController$RegisterButtonListener
+service/account/AccountService.java
+ service.account.AccountService
 controller/EmployeeController.java
  controller.EmployeeController
  controller.EmployeeController$CreateAccountButtonListener
@@ -93,5 +87,11 @@ controller/EmployeeController.java
  controller.EmployeeController$UpdateClientButtonListener
  controller.EmployeeController$ViewAccountButtonListener
  controller.EmployeeController$ViewClientButtonListener
+service/client/ClientService.java
+ service.client.ClientService
+service/client/ClientServiceImpl.java
+ service.client.ClientServiceImpl
 launcher/ComponentFactory.java
  launcher.ComponentFactory
+service/account/AccountServiceImpl.java
+ service.account.AccountServiceImpl

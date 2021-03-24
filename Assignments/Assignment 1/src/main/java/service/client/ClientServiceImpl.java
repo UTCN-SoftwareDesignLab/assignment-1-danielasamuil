@@ -29,14 +29,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Notification<Boolean> save(Long id, String name, Integer cardNumber, String address, String personalNumCode, List<Account> accounts) {
-        Client client = new ClientBuilder()
-                .setId(id)
-                .setName(name)
-                .setIdentityCardNumber(cardNumber)
-                .setAddress(address)
-                .setPersonalNumericalCode(personalNumCode)
-                .build();
+    public Notification<Boolean> save(Client client) {
 
         ClientValidator clientValidator = new ClientValidator(client);
         boolean clientValid = clientValidator.validate();
@@ -51,14 +44,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Notification<Boolean> update(Long id, String name, Integer cardNumber, String address, String personalNumCode, List<Account> accounts) {
-        Client client = new ClientBuilder()
-                .setId(id)
-                .setName(name)
-                .setIdentityCardNumber(cardNumber)
-                .setAddress(address)
-                .setPersonalNumericalCode(personalNumCode)
-                .build();
+    public Notification<Boolean> update(Client client) {
 
         ClientValidator clientValidator = new ClientValidator(client);
         boolean clientValid = clientValidator.validate();

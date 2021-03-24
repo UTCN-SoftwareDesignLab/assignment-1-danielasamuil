@@ -13,12 +13,12 @@ public interface ClientService {
 
     Client findById(Long id) throws EntityNotFoundException;
 
-    Notification<Boolean> save(Long id, String name, Integer cardNumber, String address, String personalNumCode, List<Account> accounts);
+    Notification<Boolean> save(Client client);
 
     void removeAll();
 
     boolean remove(Long id);
 
-    Notification<Boolean> update(Long id, String name, Integer cardNumber, String address, String personalNumCode, List<Account> accounts);
+    Notification<Boolean> update(Client client);
 
 }

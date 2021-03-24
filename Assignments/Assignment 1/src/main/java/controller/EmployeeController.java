@@ -52,7 +52,7 @@ public class EmployeeController {
 
             Account ac = new AccountBuilder().buildfromDTO(accountDTO);
 
-            Notification<Boolean> accountNotification = accountService.save(ac.getId(), ac.getIdentificationNumber(), ac.getType(), ac.getAmountOfMoney(), ac.getCreationDate());
+            Notification<Boolean> accountNotification = accountService.save(ac);
 
             if (accountNotification.hasErrors()) {
                 JOptionPane.showMessageDialog(employeeView.getContentPane(), accountNotification.getFormattedErrors());
@@ -82,7 +82,9 @@ public class EmployeeController {
 
             Account account1 = new AccountBuilder().buildfromDTO(accountDTO);
 
-            Notification<Boolean> accountNotification = accountService.update(account.getId(), account1.getIdentificationNumber(), account1.getType(), account1.getAmountOfMoney(), account1.getCreationDate());
+            account1.setId(account.getId());
+
+            Notification<Boolean> accountNotification = accountService.update(account1);
 
             if (accountNotification.hasErrors()) {
                 JOptionPane.showMessageDialog(employeeView.getContentPane(), accountNotification.getFormattedErrors());
@@ -166,7 +168,7 @@ public class EmployeeController {
 
             Client c = new ClientBuilder().buildfromDTO(clientDTO);
 
-            Notification<Boolean> clientNotification = clientService.save(c.getId(), c.getName(), c.getIdentityCardNumber(), c.getAddress(), c.getPersonalNumericalCode(), null);
+            Notification<Boolean> clientNotification = clientService.save(c);
 
             if (clientNotification.hasErrors()) {
                 JOptionPane.showMessageDialog(employeeView.getContentPane(), clientNotification.getFormattedErrors());
@@ -196,8 +198,9 @@ public class EmployeeController {
 
             Client c1 = new ClientBuilder().buildfromDTO(clientDTO);
 
-            Notification<Boolean> clientNotification = clientService.save(c.getId(), c1.getName(), c1.getIdentityCardNumber(), c1.getAddress(), c1.getPersonalNumericalCode(), null);
+            c1.setId(c.getId());
 
+            Notification<Boolean> clientNotification = clientService.save(c1);
             if (clientNotification.hasErrors()) {
                 JOptionPane.showMessageDialog(employeeView.getContentPane(), clientNotification.getFormattedErrors());
             } else {

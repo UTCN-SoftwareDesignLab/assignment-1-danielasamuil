@@ -35,14 +35,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Notification<Boolean> save(Long id, Integer identificationNumber, String type, Integer moneyAmount, LocalDate creationDate) {
-        Account account = new AccountBuilder()
-                .setId(id)
-                .setType(type)
-                .setAmountOfMoney(moneyAmount)
-                .setIdentificationNumber(identificationNumber)
-                .setCreationDate(creationDate)
-                .build();
+    public Notification<Boolean> save(Account account) {
 
         AccountValidator accountValidator = new AccountValidator(account);
         boolean accountValid = accountValidator.validate();
@@ -57,14 +50,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Notification<Boolean> update(Long id, Integer identificationNumber, String type, Integer moneyAmount, LocalDate creationDate) {
-        Account account = new AccountBuilder()
-                .setId(id)
-                .setType(type)
-                .setAmountOfMoney(moneyAmount)
-                .setIdentificationNumber(identificationNumber)
-                .setCreationDate(creationDate)
-                .build();
+    public Notification<Boolean> update(Account account) {
 
         AccountValidator accountValidator = new AccountValidator(account);
         boolean accountValid = accountValidator.validate();
