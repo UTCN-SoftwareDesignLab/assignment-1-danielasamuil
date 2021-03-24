@@ -1,7 +1,9 @@
 package controller;
 
 import model.Account;
+import model.Client;
 import model.builder.AccountBuilder;
+import model.builder.ClientBuilder;
 import model.validation.Notification;
 import repository.EntityNotFoundException;
 import service.account.AccountService;
@@ -32,6 +34,11 @@ public class EmployeeController {
         employeeView.setDeleteAccountButtonListener(new DeleteAccountButtonListener());
         employeeView.setViewAccountButtonListener(new ViewAccountButtonListener());
         employeeView.setTransferButtonListener(new TransferButtonListener());
+
+        employeeView.setCreateClientButtonListener(new CreateClientButtonListener());
+        employeeView.setUpdateClientButtonListener(new UpdateClientButtonListener());
+        employeeView.setDeleteClientButtonListener(new DeleteClientButtonListener());
+        employeeView.setViewClientButtonListener(new ViewClientButtonListener());
 
     }
 
@@ -155,5 +162,105 @@ public class EmployeeController {
 
     public void setVisible(boolean b) {
         employeeView.setVisible(b);
+    }
+
+    private class CreateClientButtonListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        String name = employeeView.getClientName();
+        String address = employeeView.getClientAddress();
+        String identityCardNumber = employeeView.getClientIdentityCardNumber();
+        String personalNumber = employeeView.getClientPersonalNumericalCode();
+
+        Client c = new ClientBuilder()
+                .setName(name)
+                .setAddress(address)
+                .setIdentityCardNumber(Integer.parseInt(identityCardNumber))
+                .setPersonalNumericalCode(personalNumber)
+                .build();
+
+        Notification<Boolean> clientNotification = clientService.save(c.getId(), c.getName(), c.getIdentityCardNumber(), c.getAddress(), c.getPersonalNumericalCode(),null);
+
+        if (clientNotification.hasErrors()) {
+            JOptionPane.showMessageDialog(employeeView.getContentPane(), clientNotification.getFormattedErrors());
+        } else {
+            if (!clientNotification.getResult()) {
+                JOptionPane.showMessageDialog(employeeView.getContentPane(), "Client failed to be created");
+            } else {
+                JOptionPane.showMessageDialog(employeeView.getContentPane(), "Client created with success");
+            }
+        }
+    }
+    }
+
+    private class UpdateClientButtonListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            Client c = null;
+            try {
+                c = clientService.findById(Long.parseLong(employeeView.getClientId()));
+            } catch (EntityNotFoundException entityNotFoundException) {
+                entityNotFoundException.printStackTrace();
+            }
+
+            String name = employeeView.getClientName();
+            String address = employeeView.getClientAddress();
+            String identityCardNumber = employeeView.getClientIdentityCardNumber();
+            String personalNumber = employeeView.getClientPersonalNumericalCode();
+
+            Notification<Boolean> clientNotification = clientService.save(c.getId(), name, Integer.parseInt(identityCardNumber), address, personalNumber,null);
+
+            if (clientNotification.hasErrors()) {
+                JOptionPane.showMessageDialog(employeeView.getContentPane(), clientNotification.getFormattedErrors());
+            } else {
+                if (!clientNotification.getResult()) {
+                    JOptionPane.showMessageDialog(employeeView.getContentPane(), "Client failed to be updated");
+                } else {
+                    JOptionPane.showMessageDialog(employeeView.getContentPane(), "Client updated with success");
+                }
+            }
+        }
+    }
+
+    private class DeleteClientButtonListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            Client c = null;
+            try {
+                c = clientService.findById(Long.parseLong(employeeView.getClientId()));
+            } catch (EntityNotFoundException entityNotFoundException) {
+                entityNotFoundException.printStackTrace();
+            }
+
+            Boolean b = clientService.remove(c.getId());
+
+            if(b)
+                JOptionPane.showMessageDialog(employeeView.getContentPane(), "Client deleted with success");
+            else
+                JOptionPane.showMessageDialog(employeeView.getContentPane(), "Client failed to be deleted");
+
+        }
+    }
+
+    private class ViewClientButtonListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            Client c = null;
+            try {
+                c = clientService.findById(Long.parseLong(employeeView.getClientId()));
+            } catch (
+                    EntityNotFoundException entityNotFoundException) {
+                entityNotFoundException.printStackTrace();
+            }
+
+            JOptionPane.showMessageDialog(employeeView.getContentPane(), "Client information: Name: " + c.getName() + " , Address: " + c.getAddress() + ", Identity card number: " + c.getIdentityCardNumber() + ", CNP: " + c.getPersonalNumericalCode());
+        }
     }
 }

@@ -36,10 +36,10 @@ model/Client.java
  model.Client
 model/Right.java
  model.Right
-view/EmployeeView.java
- view.EmployeeView
-service/client/ClientServiceImpl.java
- service.client.ClientServiceImpl
+repository/account/AccountRepositoryMySQL.java
+ repository.account.AccountRepositoryMySQL
+model/validation/ClientValidator.java
+ model.validation.ClientValidator
 model/validation/Notification.java
  model.validation.Notification
 database/DBConnectionFactory.java
@@ -54,8 +54,8 @@ database/Constants.java
  database.Constants$Roles
  database.Constants$Schemas
  database.Constants$Tables
-model/validation/ClientValidator.java
- model.validation.ClientValidator
+view/EmployeeView.java
+ view.EmployeeView
 database/Bootstraper.java
  database.Bootstraper
 repository/security/RightsRolesRepository.java
@@ -64,26 +64,30 @@ model/validation/AccountValidator.java
  model.validation.AccountValidator
 model/builder/AccountBuilder.java
  model.builder.AccountBuilder
-repository/client/ClientRepositoryMySQL.java
- repository.client.ClientRepositoryMySQL
+service/client/ClientServiceImpl.java
+ service.client.ClientServiceImpl
 repository/account/AccountRepository.java
  repository.account.AccountRepository
 service/account/AccountService.java
  service.account.AccountService
 launcher/Launcher.java
  launcher.Launcher
-repository/account/AccountRepositoryMySQL.java
- repository.account.AccountRepositoryMySQL
+controller/EmployeeController.java
+ controller.EmployeeController
+ controller.EmployeeController$CreateAccountButtonListener
+ controller.EmployeeController$CreateClientButtonListener
+ controller.EmployeeController$DeleteAccountButtonListener
+ controller.EmployeeController$DeleteClientButtonListener
+ controller.EmployeeController$TransferButtonListener
+ controller.EmployeeController$UpdateAccountButtonListener
+ controller.EmployeeController$UpdateClientButtonListener
+ controller.EmployeeController$ViewAccountButtonListener
+ controller.EmployeeController$ViewClientButtonListener
 controller/LoginController.java
  controller.LoginController
  controller.LoginController$LoginButtonListener
  controller.LoginController$RegisterButtonListener
-controller/EmployeeController.java
- controller.EmployeeController
- controller.EmployeeController$CreateAccountButtonListener
- controller.EmployeeController$DeleteAccountButtonListener
- controller.EmployeeController$TransferButtonListener
- controller.EmployeeController$UpdateAccountButtonListener
- controller.EmployeeController$ViewAccountButtonListener
+repository/client/ClientRepositoryMySQL.java
+ repository.client.ClientRepositoryMySQL
 launcher/ComponentFactory.java
  launcher.ComponentFactory

@@ -11,7 +11,6 @@ public class ClientValidator {
     private static final String PERSONAL_NUMBER_VALIDATION_REGEX = "^[0-9]+$";
     private static final Integer MIN_IDENTITY_CARD_NUMBER = 10000000;
     private static final Integer MAX_IDENTITY_CARD_NUMBER = 99999999;
-    private static final Integer PERSONAL_NUM_CODE_LENGTH = 12;
 
     private final Client client;
     private final List<String> errors;
@@ -37,8 +36,6 @@ public class ClientValidator {
     }
 
     private void validatePersonalNumericalCode(String personalNumericalCode) {
-        if (personalNumericalCode.length() != PERSONAL_NUM_CODE_LENGTH +1)
-            errors.add("You should have 12 digits here.");
 
         if (!Pattern.compile(PERSONAL_NUMBER_VALIDATION_REGEX).matcher(personalNumericalCode).matches()) {
             errors.add("Invalid personal numerical code, must contain only numbers");
