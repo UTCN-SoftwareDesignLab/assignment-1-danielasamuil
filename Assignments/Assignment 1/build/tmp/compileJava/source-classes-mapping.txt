@@ -56,24 +56,20 @@ model/builder/AccountBuilder.java
  model.builder.AccountBuilder
 service/user/AuthentificationServiceMySQL.java
  service.user.AuthentificationServiceMySQL
-database/DBConnectionFactory.java
- database.DBConnectionFactory
+service/client/ClientServiceImpl.java
+ service.client.ClientServiceImpl
 repository/account/AccountRepositoryMySQL.java
  repository.account.AccountRepositoryMySQL
 model/builder/ClientBuilder.java
  model.builder.ClientBuilder
-database/JDBConnectionWrapper.java
- database.JDBConnectionWrapper
+service/account/AccountServiceImpl.java
+ service.account.AccountServiceImpl
 view/DTOs/ClientDTO.java
  view.DTOs.ClientDTO
 view/DTOs/AccountDTO.java
  view.DTOs.AccountDTO
-database/Bootstraper.java
- database.Bootstraper
-controller/LoginController.java
- controller.LoginController
- controller.LoginController$LoginButtonListener
- controller.LoginController$RegisterButtonListener
+service/client/ClientService.java
+ service.client.ClientService
 service/account/AccountService.java
  service.account.AccountService
 controller/EmployeeController.java
@@ -87,11 +83,15 @@ controller/EmployeeController.java
  controller.EmployeeController$UpdateClientButtonListener
  controller.EmployeeController$ViewAccountButtonListener
  controller.EmployeeController$ViewClientButtonListener
-service/client/ClientService.java
- service.client.ClientService
-service/client/ClientServiceImpl.java
- service.client.ClientServiceImpl
+controller/LoginController.java
+ controller.LoginController
+ controller.LoginController$LoginButtonListener
+ controller.LoginController$RegisterButtonListener
+database/JDBConnectionWrapper.java
+ database.JDBConnectionWrapper
+database/Bootstraper.java
+ database.Bootstraper
+database/DBConnectionFactory.java
+ database.DBConnectionFactory
 launcher/ComponentFactory.java
  launcher.ComponentFactory
-service/account/AccountServiceImpl.java
- service.account.AccountServiceImpl

@@ -37,8 +37,7 @@ public class AccountServiceImplTest {
         Long current = all.get(all.size()-1).getId();
 
         Account ac = new AccountBuilder().setType("Savings").setAmountOfMoney(200).setCreationDate(LocalDate.now()).setIdentificationNumber(11111111).build();
-        service.save(ac.getId(),ac.getIdentificationNumber(),ac.getType(),ac.getAmountOfMoney(),ac.getCreationDate());
-
+        service.save(ac);
         Assert.assertNotNull(service.findById(current + 1));
     }
 
@@ -48,7 +47,7 @@ public class AccountServiceImplTest {
     @Test
     public void testSave() {
         Account ac = new AccountBuilder().setType("Savings").setAmountOfMoney(100).setCreationDate(LocalDate.now()).setIdentificationNumber(12345678).build();
-        Notification<Boolean> res = service.save(ac.getId(),ac.getIdentificationNumber(),ac.getType(),ac.getAmountOfMoney(),ac.getCreationDate());
+        Notification<Boolean> res = service.save(ac);
         Assert.assertTrue(res.getFormattedErrors().isEmpty());
     }
 
@@ -56,14 +55,14 @@ public class AccountServiceImplTest {
     public void testUpdate() {
         Account ac = new AccountBuilder().setType("Savings").setAmountOfMoney(300).setCreationDate(LocalDate.now()).setIdentificationNumber(13444788).build();
         ac.setType("Current");
-        Notification<Boolean> res = service.update(ac.getId(),ac.getIdentificationNumber(),ac.getType(),ac.getAmountOfMoney(),ac.getCreationDate());
+        Notification<Boolean> res = service.update(ac);
         Assert.assertTrue(res.getFormattedErrors().isEmpty());
     }
 
     @Test
     public void testRemove() {
         Account ac = new AccountBuilder().setType("Savings").setAmountOfMoney(300).setCreationDate(LocalDate.now()).setIdentificationNumber(13444788).build();
-        service.update(ac.getId(),ac.getIdentificationNumber(),ac.getType(),ac.getAmountOfMoney(),ac.getCreationDate());
+        service.update(ac);
         boolean res = service.remove(ac.getId());
         Assert.assertTrue(res);
     }
@@ -73,8 +72,8 @@ public class AccountServiceImplTest {
         Account ac1 = new AccountBuilder().setType("Savings").setAmountOfMoney(300).setCreationDate(LocalDate.now()).setIdentificationNumber(13444788).build();
         Account ac2 = new AccountBuilder().setType("Savings").setAmountOfMoney(100).setCreationDate(LocalDate.now()).setIdentificationNumber(13444788).build();
 
-        service.save(ac1.getId(), ac1.getIdentificationNumber(), ac1.getType(), ac1.getAmountOfMoney(), ac1.getCreationDate());
-        service.save(ac2.getId(), ac2.getIdentificationNumber(), ac2.getType(), ac2.getAmountOfMoney(), ac2.getCreationDate());
+        service.save(ac1);
+        service.save(ac2);
 
         service.transfer(ac1,ac2,10);
 
@@ -91,7 +90,7 @@ public class AccountServiceImplTest {
     @Test
     public void testRemoveAll() {
         Account ac = new AccountBuilder().setType("Savings").setAmountOfMoney(100).setCreationDate(LocalDate.now()).setIdentificationNumber(12345678).build();
-        service.save(ac.getId(),ac.getIdentificationNumber(),ac.getType(),ac.getAmountOfMoney(),ac.getCreationDate());
+        service.save(ac);
         service.removeAll();
         List<Account> noAccounts = service.findAll();
         Assert.assertTrue(noAccounts.isEmpty());
