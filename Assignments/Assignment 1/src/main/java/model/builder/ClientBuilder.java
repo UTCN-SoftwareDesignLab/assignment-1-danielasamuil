@@ -1,8 +1,11 @@
 package model.builder;
 
+import model.Account;
 import model.Client;
 import model.Role;
 import model.User;
+import view.DTOs.AccountDTO;
+import view.DTOs.ClientDTO;
 
 import java.util.List;
 
@@ -12,6 +15,18 @@ public class ClientBuilder {
 
     public ClientBuilder() {
         client = new Client();
+    }
+
+    public Client buildfromDTO(ClientDTO c) {
+
+        Client client = new ClientBuilder()
+                .setName(c.getName())
+                .setAddress(c.getAddress())
+                .setIdentityCardNumber(c.getIdentityCardNumber())
+                .setPersonalNumericalCode(c.getPersonalNumber())
+                .build();
+
+        return client;
     }
 
     public ClientBuilder setId(Long id) {

@@ -18,34 +18,16 @@ model/validation/ResultFetchException.java
  model.validation.ResultFetchException
 model/builder/UserBuilder.java
  model.builder.UserBuilder
-database/JDBConnectionWrapper.java
- database.JDBConnectionWrapper
+model/Account.java
+ model.Account
 model/User.java
  model.User
 database/SQLTableCreationFactory.java
  database.SQLTableCreationFactory
-model/builder/ClientBuilder.java
- model.builder.ClientBuilder
+repository/security/RightsRolesRepository.java
+ repository.security.RightsRolesRepository
 repository/EntityNotFoundException.java
  repository.EntityNotFoundException
-service/account/AccountServiceImpl.java
- service.account.AccountServiceImpl
-service/user/AuthentificationServiceMySQL.java
- service.user.AuthentificationServiceMySQL
-model/Client.java
- model.Client
-model/Right.java
- model.Right
-repository/account/AccountRepositoryMySQL.java
- repository.account.AccountRepositoryMySQL
-model/validation/ClientValidator.java
- model.validation.ClientValidator
-model/validation/Notification.java
- model.validation.Notification
-database/DBConnectionFactory.java
- database.DBConnectionFactory
-model/Account.java
- model.Account
 service/user/AuthentificationService.java
  service.user.AuthentificationService
 database/Constants.java
@@ -54,24 +36,52 @@ database/Constants.java
  database.Constants$Roles
  database.Constants$Schemas
  database.Constants$Tables
-view/EmployeeView.java
- view.EmployeeView
-database/Bootstraper.java
- database.Bootstraper
-repository/security/RightsRolesRepository.java
- repository.security.RightsRolesRepository
-model/validation/AccountValidator.java
- model.validation.AccountValidator
-model/builder/AccountBuilder.java
- model.builder.AccountBuilder
-service/client/ClientServiceImpl.java
- service.client.ClientServiceImpl
+model/Client.java
+ model.Client
+model/Right.java
+ model.Right
 repository/account/AccountRepository.java
  repository.account.AccountRepository
-service/account/AccountService.java
- service.account.AccountService
+model/validation/ClientValidator.java
+ model.validation.ClientValidator
+model/validation/Notification.java
+ model.validation.Notification
+repository/client/ClientRepositoryMySQL.java
+ repository.client.ClientRepositoryMySQL
+model/validation/AccountValidator.java
+ model.validation.AccountValidator
 launcher/Launcher.java
  launcher.Launcher
+model/builder/AccountBuilder.java
+ model.builder.AccountBuilder
+service/user/AuthentificationServiceMySQL.java
+ service.user.AuthentificationServiceMySQL
+database/DBConnectionFactory.java
+ database.DBConnectionFactory
+repository/account/AccountRepositoryMySQL.java
+ repository.account.AccountRepositoryMySQL
+service/account/AccountServiceImpl.java
+ service.account.AccountServiceImpl
+database/JDBConnectionWrapper.java
+ database.JDBConnectionWrapper
+view/DTOs/ClientDTO.java
+ view.DTOs.ClientDTO
+view/DTOs/AccountDTO.java
+ view.DTOs.AccountDTO
+service/account/AccountService.java
+ service.account.AccountService
+model/builder/ClientBuilder.java
+ model.builder.ClientBuilder
+database/Bootstraper.java
+ database.Bootstraper
+service/client/ClientServiceImpl.java
+ service.client.ClientServiceImpl
+view/EmployeeView.java
+ view.EmployeeView
+controller/LoginController.java
+ controller.LoginController
+ controller.LoginController$LoginButtonListener
+ controller.LoginController$RegisterButtonListener
 controller/EmployeeController.java
  controller.EmployeeController
  controller.EmployeeController$CreateAccountButtonListener
@@ -83,11 +93,5 @@ controller/EmployeeController.java
  controller.EmployeeController$UpdateClientButtonListener
  controller.EmployeeController$ViewAccountButtonListener
  controller.EmployeeController$ViewClientButtonListener
-controller/LoginController.java
- controller.LoginController
- controller.LoginController$LoginButtonListener
- controller.LoginController$RegisterButtonListener
-repository/client/ClientRepositoryMySQL.java
- repository.client.ClientRepositoryMySQL
 launcher/ComponentFactory.java
  launcher.ComponentFactory

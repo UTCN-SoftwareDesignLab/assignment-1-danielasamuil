@@ -1,6 +1,7 @@
 package model.builder;
 
 import model.Account;
+import view.DTOs.AccountDTO;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -11,6 +12,19 @@ public class AccountBuilder {
 
     public AccountBuilder() {
         account = new Account();
+    }
+
+    public Account buildfromDTO(AccountDTO ac) {
+
+        Account account = new AccountBuilder()
+                .setType(ac.getType())
+                .setCreationDate(ac.getCreationDate())
+                .setIdentificationNumber(ac.getIdentificationNumber())
+                .setAmountOfMoney(ac.getAmountOfMoney())
+                .build();
+
+        return account;
+
     }
 
     public AccountBuilder setId(Long id) {

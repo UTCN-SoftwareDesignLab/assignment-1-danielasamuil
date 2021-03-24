@@ -1,14 +1,22 @@
 package view;
 
 import model.Account;
+import model.Client;
+import model.builder.AccountBuilder;
+import view.DTOs.AccountDTO;
+import view.DTOs.ClientDTO;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.List;
 
 import static javax.swing.BoxLayout.Y_AXIS;
 
 public class EmployeeView extends JFrame {
+
+    AccountDTO accountDTO;
+    ClientDTO clientDTO;
 
     private JButton buttonCreateAccount;
     private JButton buttonUpdateAccount;
@@ -66,6 +74,8 @@ public class EmployeeView extends JFrame {
     }
 
     public void initializeFields() {
+        this.clientDTO = new ClientDTO();
+        this.accountDTO = new AccountDTO();
         identificationNumberText = new JTextField("identification nr account");
         typeText = new JTextField("type account");
         amountOfMoneyTxt = new JTextField("money amount");
@@ -171,5 +181,32 @@ public class EmployeeView extends JFrame {
 
     public void setViewClientButtonListener(ActionListener viewClientButtonListener) {
         buttonViewClient.addActionListener(viewClientButtonListener);
+    }
+
+
+    public AccountDTO getAccountDTO() {
+        initializeAccountDTO();
+        return accountDTO;
+    }
+
+    public ClientDTO getClientDTO() {
+        initializeClientDTO();
+        return clientDTO;
+    }
+
+    public void initializeAccountDTO() {
+
+        this.accountDTO.setIdentificationNumber(Integer.parseInt(getIdentificationNumber()));
+        this.accountDTO.setType(getTypeTxt());
+        this.accountDTO.setAmountOfMoney(Integer.parseInt(getAmountOfMoney()));
+        this.accountDTO.setCreationDate(LocalDate.parse(getCreationDate()));
+    }
+
+    public void initializeClientDTO() {
+
+        this.clientDTO.setName(getClientName());
+        this.clientDTO.setAddress(getClientAddress());
+        this.clientDTO.setIdentityCardNumber(Integer.parseInt(getClientIdentityCardNumber()));
+        this.clientDTO.setPersonalNumber(getClientPersonalNumericalCode());
     }
 }

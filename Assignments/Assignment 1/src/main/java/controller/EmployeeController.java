@@ -8,6 +8,8 @@ import model.validation.Notification;
 import repository.EntityNotFoundException;
 import service.account.AccountService;
 import service.client.ClientService;
+import view.DTOs.AccountDTO;
+import view.DTOs.ClientDTO;
 import view.EmployeeView;
 
 import javax.swing.*;
@@ -46,17 +48,9 @@ public class EmployeeController {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            String identificationNumber = employeeView.getIdentificationNumber();
-            String type = employeeView.getTypeTxt();
-            String amountOfMoney = employeeView.getAmountOfMoney();
-            String creationDate = employeeView.getCreationDate();
+            AccountDTO accountDTO = employeeView.getAccountDTO();
 
-            Account ac = new AccountBuilder()
-                    .setIdentificationNumber(Integer.parseInt(identificationNumber))
-                    .setType(type)
-                    .setAmountOfMoney(Integer.parseInt(amountOfMoney))
-                    .setCreationDate(LocalDate.parse(creationDate))
-                    .build();
+            Account ac = new AccountBuilder().buildfromDTO(accountDTO);
 
             Notification<Boolean> accountNotification = accountService.save(ac.getId(), ac.getIdentificationNumber(), ac.getType(), ac.getAmountOfMoney(), ac.getCreationDate());
 
@@ -84,12 +78,11 @@ public class EmployeeController {
                 entityNotFoundException.printStackTrace();
             }
 
-            String identificationNumber = employeeView.getIdentificationNumber();
-            String type = employeeView.getTypeTxt();
-            String amountOfMoney = employeeView.getAmountOfMoney();
-            String creationDate = employeeView.getCreationDate();
+            AccountDTO accountDTO = employeeView.getAccountDTO();
 
-            Notification<Boolean> accountNotification = accountService.update(account.getId(), Integer.parseInt(identificationNumber), type, Integer.parseInt(amountOfMoney), LocalDate.parse(creationDate));
+            Account account1 = new AccountBuilder().buildfromDTO(accountDTO);
+
+            Notification<Boolean> accountNotification = accountService.update(account.getId(), account1.getIdentificationNumber(), account1.getType(), account1.getAmountOfMoney(), account1.getCreationDate());
 
             if (accountNotification.hasErrors()) {
                 JOptionPane.showMessageDialog(employeeView.getContentPane(), accountNotification.getFormattedErrors());
@@ -169,17 +162,9 @@ public class EmployeeController {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            String name = employeeView.getClientName();
-            String address = employeeView.getClientAddress();
-            String identityCardNumber = employeeView.getClientIdentityCardNumber();
-            String personalNumber = employeeView.getClientPersonalNumericalCode();
+            ClientDTO clientDTO = employeeView.getClientDTO();
 
-            Client c = new ClientBuilder()
-                    .setName(name)
-                    .setAddress(address)
-                    .setIdentityCardNumber(Integer.parseInt(identityCardNumber))
-                    .setPersonalNumericalCode(personalNumber)
-                    .build();
+            Client c = new ClientBuilder().buildfromDTO(clientDTO);
 
             Notification<Boolean> clientNotification = clientService.save(c.getId(), c.getName(), c.getIdentityCardNumber(), c.getAddress(), c.getPersonalNumericalCode(), null);
 
@@ -207,12 +192,11 @@ public class EmployeeController {
                 entityNotFoundException.printStackTrace();
             }
 
-            String name = employeeView.getClientName();
-            String address = employeeView.getClientAddress();
-            String identityCardNumber = employeeView.getClientIdentityCardNumber();
-            String personalNumber = employeeView.getClientPersonalNumericalCode();
+            ClientDTO clientDTO = employeeView.getClientDTO();
 
-            Notification<Boolean> clientNotification = clientService.save(c.getId(), name, Integer.parseInt(identityCardNumber), address, personalNumber, null);
+            Client c1 = new ClientBuilder().buildfromDTO(clientDTO);
+
+            Notification<Boolean> clientNotification = clientService.save(c.getId(), c1.getName(), c1.getIdentityCardNumber(), c1.getAddress(), c1.getPersonalNumericalCode(), null);
 
             if (clientNotification.hasErrors()) {
                 JOptionPane.showMessageDialog(employeeView.getContentPane(), clientNotification.getFormattedErrors());
