@@ -13,7 +13,7 @@ public class AccountBuilder {
         account = new Account();
     }
 
-    public AccountBuilder setId(Long id){
+    public AccountBuilder setId(Long id) {
         account.setId(id);
         return this;
     }
@@ -33,7 +33,7 @@ public class AccountBuilder {
         return this;
     }
 
-    public AccountBuilder setCreationDate(LocalDate creationDate){
+    public AccountBuilder setCreationDate(LocalDate creationDate) {
         account.setCreationDate(creationDate);
         return this;
     }

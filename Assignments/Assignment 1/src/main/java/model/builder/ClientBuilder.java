@@ -34,7 +34,7 @@ public class ClientBuilder {
         return this;
     }
 
-    public ClientBuilder setPersonalNumericalCode(String personalNumericalCode){
+    public ClientBuilder setPersonalNumericalCode(String personalNumericalCode) {
         client.setPersonalNumericalCode(personalNumericalCode);
         return this;
     }

@@ -65,7 +65,7 @@ public class EmployeeView extends JFrame {
         add(buttonViewClient);
     }
 
-    public void initializeFields(){
+    public void initializeFields() {
         identificationNumberText = new JTextField("identification nr account");
         typeText = new JTextField("type account");
         amountOfMoneyTxt = new JTextField("money amount");
@@ -93,17 +93,29 @@ public class EmployeeView extends JFrame {
         return identificationNumberText.getText();
     }
 
-    public String getTypeTxt() { return typeText.getText();}
+    public String getTypeTxt() {
+        return typeText.getText();
+    }
 
-    public String getAmountOfMoney() { return amountOfMoneyTxt.getText();}
+    public String getAmountOfMoney() {
+        return amountOfMoneyTxt.getText();
+    }
 
-    public String getCreationDate() { return creationDateTxt.getText(); }
+    public String getCreationDate() {
+        return creationDateTxt.getText();
+    }
 
-    public String getId1() { return accountId1.getText(); }
+    public String getId1() {
+        return accountId1.getText();
+    }
 
-    public String getId2() { return accountId2.getText(); }
+    public String getId2() {
+        return accountId2.getText();
+    }
 
-    public String getMoneyAmountForTransfer() { return moneyAmountForTransfer.getText(); }
+    public String getMoneyAmountForTransfer() {
+        return moneyAmountForTransfer.getText();
+    }
 
     public String getClientId() {
         return clientIdTxt.getText();

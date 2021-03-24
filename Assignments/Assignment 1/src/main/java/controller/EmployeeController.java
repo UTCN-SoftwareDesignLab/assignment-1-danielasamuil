@@ -116,7 +116,7 @@ public class EmployeeController {
 
             Boolean b = accountService.remove(account.getId());
 
-            if(b)
+            if (b)
                 JOptionPane.showMessageDialog(employeeView.getContentPane(), "Account deleted with success");
             else
                 JOptionPane.showMessageDialog(employeeView.getContentPane(), "Account failed to be deleted");
@@ -152,7 +152,7 @@ public class EmployeeController {
             try {
                 account1 = accountService.findById(Long.parseLong(employeeView.getId1()));
                 account2 = accountService.findById(Long.parseLong(employeeView.getId2()));
-                accountService.transfer(account1,account2,Integer.parseInt(moneyAmountForTransfer));
+                accountService.transfer(account1, account2, Integer.parseInt(moneyAmountForTransfer));
             } catch (
                     EntityNotFoundException entityNotFoundException) {
                 entityNotFoundException.printStackTrace();
@@ -169,30 +169,30 @@ public class EmployeeController {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-        String name = employeeView.getClientName();
-        String address = employeeView.getClientAddress();
-        String identityCardNumber = employeeView.getClientIdentityCardNumber();
-        String personalNumber = employeeView.getClientPersonalNumericalCode();
+            String name = employeeView.getClientName();
+            String address = employeeView.getClientAddress();
+            String identityCardNumber = employeeView.getClientIdentityCardNumber();
+            String personalNumber = employeeView.getClientPersonalNumericalCode();
 
-        Client c = new ClientBuilder()
-                .setName(name)
-                .setAddress(address)
-                .setIdentityCardNumber(Integer.parseInt(identityCardNumber))
-                .setPersonalNumericalCode(personalNumber)
-                .build();
+            Client c = new ClientBuilder()
+                    .setName(name)
+                    .setAddress(address)
+                    .setIdentityCardNumber(Integer.parseInt(identityCardNumber))
+                    .setPersonalNumericalCode(personalNumber)
+                    .build();
 
-        Notification<Boolean> clientNotification = clientService.save(c.getId(), c.getName(), c.getIdentityCardNumber(), c.getAddress(), c.getPersonalNumericalCode(),null);
+            Notification<Boolean> clientNotification = clientService.save(c.getId(), c.getName(), c.getIdentityCardNumber(), c.getAddress(), c.getPersonalNumericalCode(), null);
 
-        if (clientNotification.hasErrors()) {
-            JOptionPane.showMessageDialog(employeeView.getContentPane(), clientNotification.getFormattedErrors());
-        } else {
-            if (!clientNotification.getResult()) {
-                JOptionPane.showMessageDialog(employeeView.getContentPane(), "Client failed to be created");
+            if (clientNotification.hasErrors()) {
+                JOptionPane.showMessageDialog(employeeView.getContentPane(), clientNotification.getFormattedErrors());
             } else {
-                JOptionPane.showMessageDialog(employeeView.getContentPane(), "Client created with success");
+                if (!clientNotification.getResult()) {
+                    JOptionPane.showMessageDialog(employeeView.getContentPane(), "Client failed to be created");
+                } else {
+                    JOptionPane.showMessageDialog(employeeView.getContentPane(), "Client created with success");
+                }
             }
         }
-    }
     }
 
     private class UpdateClientButtonListener implements ActionListener {
@@ -212,7 +212,7 @@ public class EmployeeController {
             String identityCardNumber = employeeView.getClientIdentityCardNumber();
             String personalNumber = employeeView.getClientPersonalNumericalCode();
 
-            Notification<Boolean> clientNotification = clientService.save(c.getId(), name, Integer.parseInt(identityCardNumber), address, personalNumber,null);
+            Notification<Boolean> clientNotification = clientService.save(c.getId(), name, Integer.parseInt(identityCardNumber), address, personalNumber, null);
 
             if (clientNotification.hasErrors()) {
                 JOptionPane.showMessageDialog(employeeView.getContentPane(), clientNotification.getFormattedErrors());
@@ -240,7 +240,7 @@ public class EmployeeController {
 
             Boolean b = clientService.remove(c.getId());
 
-            if(b)
+            if (b)
                 JOptionPane.showMessageDialog(employeeView.getContentPane(), "Client deleted with success");
             else
                 JOptionPane.showMessageDialog(employeeView.getContentPane(), "Client failed to be deleted");

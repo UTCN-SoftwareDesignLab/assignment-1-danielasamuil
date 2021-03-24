@@ -84,7 +84,9 @@ public class ComponentFactory {
         return clientRepositoryMySQL;
     }
 
-    public AccountRepositoryMySQL getAccountRepositoryMySQL() { return accountRepositoryMySQL;}
+    public AccountRepositoryMySQL getAccountRepositoryMySQL() {
+        return accountRepositoryMySQL;
+    }
 
     public LoginController getLoginController() {
         return loginController;

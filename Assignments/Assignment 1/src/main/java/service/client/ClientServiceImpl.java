@@ -31,22 +31,21 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Notification<Boolean> save(Long id, String name, Integer cardNumber, String address, String personalNumCode, List<Account> accounts) {
         Client client = new ClientBuilder()
-                            .setId(id)
-                            .setName(name)
-                            .setIdentityCardNumber(cardNumber)
-                            .setAddress(address)
-                            .setPersonalNumericalCode(personalNumCode)
-                            .build();
+                .setId(id)
+                .setName(name)
+                .setIdentityCardNumber(cardNumber)
+                .setAddress(address)
+                .setPersonalNumericalCode(personalNumCode)
+                .build();
 
         ClientValidator clientValidator = new ClientValidator(client);
         boolean clientValid = clientValidator.validate();
         Notification<Boolean> clientNotification = new Notification<>();
 
-        if(!clientValid) {
+        if (!clientValid) {
             clientValidator.getErrors().forEach(clientNotification::addError);
             clientNotification.setResult(Boolean.FALSE);
-        }
-        else
+        } else
             clientNotification.setResult(repository.save(client));
         return clientNotification;
     }
@@ -65,11 +64,10 @@ public class ClientServiceImpl implements ClientService {
         boolean clientValid = clientValidator.validate();
         Notification<Boolean> clientNotification = new Notification<>();
 
-        if(!clientValid) {
+        if (!clientValid) {
             clientValidator.getErrors().forEach(clientNotification::addError);
             clientNotification.setResult(Boolean.FALSE);
-        }
-        else
+        } else
             clientNotification.setResult(repository.update(client));
         return clientNotification;
     }

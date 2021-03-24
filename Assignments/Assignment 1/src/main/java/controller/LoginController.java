@@ -37,7 +37,7 @@ public class LoginController {
             if (loginNotification.hasErrors()) {
                 JOptionPane.showMessageDialog(loginView.getContentPane(), loginNotification.getFormattedErrors());
             } else {
-                if(!username.equals("admin@application.com"))
+                if (!username.equals("admin@application.com"))
                     employeeController.setVisible(true);
             }
         }

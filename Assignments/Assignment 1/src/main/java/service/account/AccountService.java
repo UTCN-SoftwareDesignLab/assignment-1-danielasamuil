@@ -22,5 +22,6 @@ public interface AccountService {
     void removeAll();
 
     boolean remove(Long id);
+
     void transfer(Account account1, Account account2, Integer amount) throws EntityNotFoundException;
 }
